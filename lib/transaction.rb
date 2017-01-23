@@ -1,10 +1,11 @@
 #controller - updates the balance and statement classes
 class Transaction
 
-  attr_accessor :balance_amount
+  attr_accessor :balance_amount, :statement
 
-  def initialize(balance_klass)
+  def initialize(balance_klass, statement_klass)
     @balance_amount = balance_klass.amount
+    @statement = statement_klass
   end
 
   def deposit(amount)
@@ -21,6 +22,10 @@ class Transaction
 
   def statement_string(date, credit, debit, balance)
     "#{date} | #{credit} | #{debit} | #{balance}\n"
+  end
+
+  def update_statement(statement_string)
+
   end
 
   # private

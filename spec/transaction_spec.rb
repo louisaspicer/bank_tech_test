@@ -4,13 +4,19 @@ describe Transaction do
 
   # balance_klass = class_double("Balance", new: balance)
   # balance = instance_double("Balance", :amount => 0)
-  subject(:transaction) {described_class.new(balance_klass.new)}
+  subject(:transaction) {described_class.new(balance_klass.new, statement_klass.new)}
   let(:balance_klass) {double :balance_klass, new: balance}
   let(:balance) {double :balance, amount: 0}
+  let(:statement_klass) {double :statement_klass, new: statement}
+  let(:statement) {double :statement, history: ["Date | Credit | Debit | Balance\n"]}
 
   describe '#initializing' do
-    it 'knows the balance' do
+    it 'takes in the balance' do
       expect(transaction.balance_amount).to eq(balance.amount)
+    end
+
+    it 'takes in the statement' do
+      expect(transaction.statement).to eq(statement)
     end
   end
 
