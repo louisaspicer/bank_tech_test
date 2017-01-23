@@ -25,9 +25,11 @@ describe Transaction do
       expect{transaction.deposit(20)}.to change{transaction.balance_amount}.from(0).to(20)
     end
 
-    # it 'updates statement with deposit amount and date' do
-    #
-    # end
+    it 'returns updates statement string' do
+      date = Time.now.strftime("%d/%m/%Y")
+      string = "#{date} |  | 20 | 20\n"
+      expect(transaction.deposit(20)).to eq(["Date | Credit | Debit | Balance\n", "#{string}"])
+    end
 
   end
 

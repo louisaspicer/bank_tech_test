@@ -10,6 +10,7 @@ class Transaction
 
   def deposit(amount)
     @balance_amount += amount
+    update_statement("#{date} |  | #{amount} | #{@balance_amount}\n")
   end
 
   def withdraw(amount)
@@ -19,7 +20,7 @@ class Transaction
   def update_statement(statement_string)
     @statement.history << statement_string
   end
-  
+
   private
 
   def date
