@@ -19,4 +19,10 @@ describe Transaction do
       expect{transaction.deposit(20)}.to change{transaction.balance_amount}.from(0).to(20)
     end
   end
+
+  describe '#withdraw' do
+    it 'decrease the balance amount' do
+      expect{transaction.withdraw(20)}.to change{transaction.balance_amount}.from(0).to(-20)
+    end
+  end
 end
