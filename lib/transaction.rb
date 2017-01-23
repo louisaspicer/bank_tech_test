@@ -15,11 +15,10 @@ class Transaction
 
   def withdraw(amount)
     @balance_amount -= amount
+    update_statement("#{date} | #{amount} |  | #{@balance_amount}\n")
   end
 
-  def update_statement(statement_string)
-    @statement.history << statement_string
-  end
+
 
   private
 
@@ -27,9 +26,13 @@ class Transaction
     Time.now.strftime("%d/%m/%Y")
   end
 
-  def statement_string(date, credit, debit, balance)
-    "#{date} | #{credit} | #{debit} | #{balance}\n"
+  def update_statement(statement_string)
+    @statement.history << statement_string
   end
+
+  # def statement_string(date, credit, debit, balance)
+  #   "#{date} | #{credit} | #{debit} | #{balance}\n"
+  # end
 
 
   # private

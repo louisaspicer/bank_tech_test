@@ -25,7 +25,7 @@ describe Transaction do
       expect{transaction.deposit(20)}.to change{transaction.balance_amount}.from(0).to(20)
     end
 
-    it 'returns updates statement string' do
+    it 'returns updated statement string' do
       date = Time.now.strftime("%d/%m/%Y")
       string = "#{date} |  | 20 | 20\n"
       expect(transaction.deposit(20)).to eq(["Date | Credit | Debit | Balance\n", "#{string}"])
@@ -37,12 +37,19 @@ describe Transaction do
     it 'decrease the balance amount' do
       expect{transaction.withdraw(20)}.to change{transaction.balance_amount}.from(0).to(-20)
     end
+
+    it 'returns updated statement string' do
+      date = Time.now.strftime("%d/%m/%Y")
+      string = "#{date} | 20 |  | -20\n"
+      expect(transaction.withdraw(20)).to eq(["Date | Credit | Debit | Balance\n", "#{string}"])
+    end
+
   end
 
-  describe '#update_statement' do
-    it 'updates statement class with the string' do
-      string = "23/01/2017 |  | 20 | 20\n"
-      expect(transaction.update_statement(string)).to eq(["Date | Credit | Debit | Balance\n", "#{string}"])
-    end
-  end
+  # describe '#update_statement' do
+  #   it 'updates statement class with the string' do
+  #     string = "23/01/2017 |  | 20 | 20\n"
+  #     expect(transaction.update_statement(string)).to eq(["Date | Credit | Debit | Balance\n", "#{string}"])
+  #   end
+  # end
 end
