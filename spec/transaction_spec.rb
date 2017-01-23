@@ -8,7 +8,7 @@ describe Transaction do
   let(:balance) {double :balance, amount: 0}
 
   let(:statement_klass) {double :statement_klass, new: statement}
-  let(:statement) {double :statement, history: ["Date | Credit | Debit | Balance\n"]}
+  let(:statement) {double :statement, history: "Date | Credit | Debit | Balance\n"}
 
   describe '#initializing' do
     it 'takes in the balance' do
@@ -28,7 +28,7 @@ describe Transaction do
     it 'returns updated statement string' do
       date = Time.now.strftime("%d/%m/%Y")
       string = "#{date} |  | 20 | 20\n"
-      expect(transaction.deposit(20)).to eq(["Date | Credit | Debit | Balance\n", "#{string}"])
+      expect(transaction.deposit(20)).to eq("Date | Credit | Debit | Balance\n#{string}")
     end
 
   end
@@ -41,7 +41,7 @@ describe Transaction do
     it 'returns updated statement string' do
       date = Time.now.strftime("%d/%m/%Y")
       string = "#{date} | 20 |  | -20\n"
-      expect(transaction.withdraw(20)).to eq(["Date | Credit | Debit | Balance\n", "#{string}"])
+      expect(transaction.withdraw(20)).to eq("Date | Credit | Debit | Balance\n#{string}")
     end
 
   end
