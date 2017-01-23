@@ -1,3 +1,4 @@
+#keeps track of the balance
 class Balance
 
   attr_accessor :amount

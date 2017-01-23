@@ -1,22 +1,24 @@
-#controller - updates the balance and statement classes
-class Bank
+require './lib/statement.rb'
+require './lib/balance.rb'
 
-  attr_accessor :balance_amount, :statement, :statement_history
+class Transaction
+
+  attr_accessor :balance, :statement, :statement_history
 
   def initialize(balance_klass, statement_klass)
-    @balance_amount = balance_klass.amount
+    @balance = (balance_klass.new).amount
     @statement = statement_klass
     @statement_history = []
   end
 
   def deposit(amount)
-    @balance_amount += amount
-    update_statement(date, "", amount, @balance_amount)
+    self.balance += amount
+    update_statement(date, "", amount, self.balance)
   end
 
   def withdraw(amount)
-    @balance_amount -= amount
-    update_statement(date, amount, "", @balance_amount)
+    self.balance -= amount
+    update_statement(date, amount, "", self.balance)
   end
 
   def print_statement
@@ -36,15 +38,5 @@ class Bank
   def update_statement(date, credit, debit, balance)
     @statement_history << @statement.new(date, credit, debit, balance)
   end
-
-  # def statement_string(date, credit, debit, balance)
-  #   "#{date} | #{credit} | #{debit} | #{balance}\n"
-  # end
-
-
-  # private
-  # def balance_amount
-  #   @balance.amount
-  # end
 
 end
