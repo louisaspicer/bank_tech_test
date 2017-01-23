@@ -10,5 +10,9 @@ class Balance
     @amount += amount
   end
 
+  def decrease_balance(amount)
+    @amount -= amount
+  end
+
 
 end
