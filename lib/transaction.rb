@@ -20,7 +20,7 @@ class Transaction
   end
 
   def statement_string(date, credit, debit, balance)
-    "#{date} | #{credit} | #{debit} | #{balance}"
+    "#{date} | #{credit} | #{debit} | #{balance}\n"
   end
 
   # private
