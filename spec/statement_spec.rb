@@ -8,6 +8,18 @@ describe Statement do
     it "has a date attribute" do
       expect(statement.date).to eq(Date.today)
     end
+
+    it "has a credit attribute" do
+      expect(statement.credit).to eq("")
+    end
+
+    it "has a debit attribute" do
+      expect(statement.debit).to eq(20)
+    end
+
+    it "has a balance attribute" do
+      expect(statement.balance).to eq(20)
+    end
   end
 
 
