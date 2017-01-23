@@ -6,7 +6,7 @@ class Balance
     @amount = 0
   end
 
-  def update_balance(amount)
+  def increase_balance(amount)
     @amount += amount
   end
 
