@@ -8,6 +8,7 @@ describe Balance do
     it 'has an initial balance of zero' do
       expect(balance.amount).to eq(0)
     end
+  end
 
   describe '#increase_amount' do
     it 'can update the bank balance' do
@@ -31,10 +32,6 @@ describe Balance do
         expect(balance.amount).to eq(-20)
       end
     end
-
-
-  end
-
   end
 
 end
