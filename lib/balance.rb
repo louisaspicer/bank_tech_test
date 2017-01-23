@@ -4,7 +4,7 @@ class Balance
   attr_accessor :amount
 
   def initialize
-    @amount = 0
+    @amount = 0.00
   end
 
 end

@@ -27,6 +27,7 @@ Using this, I diagrammed my initial understanding of what classes needed to be m
 
 ##### To be implemented:
 * Continue to refactor and TDD `Transaction` into `Statement_View` and `Bank` controller.
+* Clean up statement to include floating point numbers throughout.
 
 #### User Stores
 
@@ -70,3 +71,6 @@ I would like my statement to be formatted clearly.
 
 #### Run the tests:
 * Once you have the repository cloned to your local machine and the gems installed, you should be able to run `rspec` in your terminal when in the root of the directory to see the tests.
+
+#### Example:
+![Alt text](./example.png "example")
