@@ -1,6 +1,6 @@
 class Balance
 
-  attr_reader :amount
+  attr_accessor :amount
 
   def initialize
     @amount = 0

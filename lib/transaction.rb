@@ -1,9 +1,19 @@
+#controller - updates the balance class
 class Transaction
 
-  attr_reader :balance
-  
+  attr_accessor :balance_amount
+
   def initialize(balance_klass)
-    @balance = balance_klass.new
+    @balance_amount = balance_klass.amount
   end
+
+  def deposit(amount)
+    @balance_amount += amount
+  end
+
+  # private
+  # def balance_amount
+  #   @balance.amount
+  # end
 
 end
