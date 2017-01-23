@@ -19,6 +19,10 @@ describe Transaction do
       expect{transaction.deposit(20)}.to change{transaction.balance_amount}.from(0).to(20)
     end
 
+    # it 'updates statement with deposit amount and date' do
+    #
+    # end
+
   end
 
   describe '#withdraw' do
@@ -30,6 +34,13 @@ describe Transaction do
   describe '#date' do
     it 'returns the date for a transaction' do
       expect(transaction.date).to eq(Time.now.strftime("%d/%m/%Y"))
+    end
+  end
+
+  describe '#update_statement' do
+    it 'updates statement with date, amount and type of transaction' do
+      date = Time.now.strftime("%d/%m/%Y")
+      expect(transaction.update_statement(date, "", 20, 20)).to eq("#{date}|''|20||20")
     end
   end
 end
