@@ -1,9 +1,15 @@
 class Statement
 
-  attr_accessor :history
+  # attr_accessor :history
+  #
+  # def initialize
+  #   @history = "Date | Credit | Debit | Balance\n"
+  # end
 
-  def initialize
-    @history = "Date | Credit | Debit | Balance\n"
+  attr_accessor :date, :credit, :debit, :balance
+
+  def initialize(*args)
+    @date, @credit, @debit, @balance = args
   end
 
 end

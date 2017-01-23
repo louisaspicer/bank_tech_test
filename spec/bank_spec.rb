@@ -1,8 +1,8 @@
-require './lib/bank.rb'
+require './lib/controller/bank.rb'
 
 describe Bank do
 
-  subject(:bank) {described_class.new(balance_klass.new, statement_klass.new)}
+  subject(:bank) {described_class.new(balance_klass.new, statement_klass)}
 
   let(:balance_klass) {double :balance_klass, new: balance}
   let(:balance) {double :balance, amount: 0}
@@ -16,7 +16,7 @@ describe Bank do
     end
 
     it 'takes in the statement' do
-      expect(bank.statement).to eq(statement)
+      expect(bank.statement).to eq(statement_klass)
     end
   end
 
@@ -25,10 +25,8 @@ describe Bank do
       expect{bank.deposit(20)}.to change{bank.balance_amount}.from(0).to(20)
     end
 
-    it 'returns updated statement string' do
-      date = Time.now.strftime("%d/%m/%Y")
-      string = "#{date} |  | 20 | 20\n"
-      expect(bank.deposit(20)).to eq("Date | Credit | Debit | Balance\n#{string}")
+    it 'pushes statement object to statement history array' do
+      expect(bank.deposit(20)).to eq([statement])
     end
 
   end
@@ -38,16 +36,15 @@ describe Bank do
       expect{bank.withdraw(20)}.to change{bank.balance_amount}.from(0).to(-20)
     end
 
-    it 'returns updated statement string' do
-      date = Time.now.strftime("%d/%m/%Y")
-      string = "#{date} | 20 |  | -20\n"
-      expect(bank.withdraw(20)).to eq("Date | Credit | Debit | Balance\n#{string}")
+    it 'pushes statement object to statement history array' do
+      expect(bank.withdraw(20)).to eq([statement])
     end
   end
 
   describe '#print_statement' do
     it "prints the transaction history" do
-      expect{bank.print_statement}.to output(statement.history).to_stdout
+      statement = "Date        || Credit  || Debit   || Balance\n"
+      expect{bank.print_statement}.to output(statement).to_stdout
     end
   end
 
