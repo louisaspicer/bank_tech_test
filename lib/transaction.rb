@@ -1,4 +1,4 @@
-#controller - updates the balance class
+#controller - updates the balance and statement classes
 class Transaction
 
   attr_accessor :balance_amount
