@@ -15,6 +15,10 @@ class Transaction
     @balance_amount -= amount
   end
 
+  def date
+    Time.now.strftime("%d/%m/%Y")
+  end
+
   # private
   # def balance_amount
   #   @balance.amount
