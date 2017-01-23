@@ -6,9 +6,4 @@ class Statement
     @history = "Date | Credit | Debit | Balance\n"
   end
 
-  def print_history
-    @history
-  end
-
-
 end

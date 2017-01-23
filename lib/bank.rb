@@ -1,5 +1,5 @@
 #controller - updates the balance and statement classes
-class Transaction
+class Bank
 
   attr_accessor :balance_amount, :statement
 
@@ -18,7 +18,9 @@ class Transaction
     update_statement("#{date} | #{amount} |  | #{@balance_amount}\n")
   end
 
-
+  def print_statement
+    puts @statement.history
+  end
 
   private
 
