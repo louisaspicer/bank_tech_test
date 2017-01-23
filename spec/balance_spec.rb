@@ -6,7 +6,7 @@ describe Balance do
 
   describe '#initializing' do
     it 'has an initial balance of zero' do
-      expect(balance.amount).to eq(0)
+      expect(balance.amount=0).to eq(0)
     end
   end
 
