@@ -9,6 +9,13 @@ describe Balance do
       expect(balance.amount).to eq(0)
     end
 
+  describe '#update balance amount' do
+    it 'can update the bank balance' do
+      balance.update_amount(20)
+      expect(balance.amount).to eq(20)
+    end
+  end
+
   end
 
 end
