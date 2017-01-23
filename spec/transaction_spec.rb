@@ -11,4 +11,11 @@ describe Transaction do
       expect(transaction.balance).to eq(balance)
     end
   end
+
+  describe '#deposit' do
+    it 'increases the balance amount' do
+      transaction.deposit(20)
+      expect(transaction.balance.amount).to eq(20)
+    end
+  end
 end
