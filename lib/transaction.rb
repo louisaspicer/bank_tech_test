@@ -19,6 +19,10 @@ class Transaction
     Time.now.strftime("%d/%m/%Y")
   end
 
+  def statement_string(date, credit, debit, balance)
+    "#{date} | #{credit} | #{debit} | #{balance}"
+  end
+
   # private
   # def balance_amount
   #   @balance.amount

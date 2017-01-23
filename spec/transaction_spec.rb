@@ -37,10 +37,10 @@ describe Transaction do
     end
   end
 
-  describe '#update_statement' do
+  describe '#statement_string' do
     it 'updates statement with date, amount and type of transaction' do
       date = Time.now.strftime("%d/%m/%Y")
-      expect(transaction.update_statement(date, "", 20, 20)).to eq("#{date}|''|20||20")
+      expect(transaction.statement_string(date, "", 20, 20)).to eq("#{date} |  | 20 | 20")
     end
   end
 end
