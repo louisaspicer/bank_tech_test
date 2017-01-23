@@ -10,4 +10,5 @@ class Balance
     @amount += amount
   end
 
+
 end
