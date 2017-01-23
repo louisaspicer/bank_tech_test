@@ -37,19 +37,6 @@ describe Transaction do
     end
   end
 
-  describe '#date' do
-    it 'returns the date for a transaction' do
-      expect(transaction.date).to eq(Time.now.strftime("%d/%m/%Y"))
-    end
-  end
-
-  describe '#statement_string' do
-    it 'returns string with date, amount and type of transaction' do
-      date = Time.now.strftime("%d/%m/%Y")
-      expect(transaction.statement_string(date, "", 20, 20)).to eq("#{date} |  | 20 | 20\n")
-    end
-  end
-
   describe '#update_statement' do
     it 'updates statement class with the string' do
       string = "23/01/2017 |  | 20 | 20\n"

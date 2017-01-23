@@ -16,6 +16,12 @@ class Transaction
     @balance_amount -= amount
   end
 
+  def update_statement(statement_string)
+    @statement.history << statement_string
+  end
+  
+  private
+
   def date
     Time.now.strftime("%d/%m/%Y")
   end
@@ -24,9 +30,6 @@ class Transaction
     "#{date} | #{credit} | #{debit} | #{balance}\n"
   end
 
-  def update_statement(statement_string)
-    @statement.history << statement_string
-  end
 
   # private
   # def balance_amount
