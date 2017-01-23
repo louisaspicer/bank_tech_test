@@ -2,11 +2,11 @@ require './lib/transaction.rb'
 
 describe Transaction do
 
-  # balance_klass = class_double("Balance", new: balance)
-  # balance = instance_double("Balance", :amount => 0)
   subject(:transaction) {described_class.new(balance_klass.new, statement_klass.new)}
+
   let(:balance_klass) {double :balance_klass, new: balance}
   let(:balance) {double :balance, amount: 0}
+
   let(:statement_klass) {double :statement_klass, new: statement}
   let(:statement) {double :statement, history: ["Date | Credit | Debit | Balance\n"]}
 
@@ -53,7 +53,7 @@ describe Transaction do
   describe '#update_statement' do
     it 'updates statement class with the string' do
       string = "23/01/2017 |  | 20 | 20\n"
-      expect(transaction.update_statement(string)).to eq(["Date | Credit | Debit | Balance\n#{string}"])
+      expect(transaction.update_statement(string)).to eq(["Date | Credit | Debit | Balance\n", "#{string}"])
     end
   end
 end

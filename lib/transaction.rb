@@ -25,7 +25,7 @@ class Transaction
   end
 
   def update_statement(statement_string)
-
+    @statement.history << statement_string
   end
 
   # private
