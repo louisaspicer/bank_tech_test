@@ -8,7 +8,7 @@ describe Transaction do
   let(:balance) {double :balance, amount: 0}
 
   let(:statement_klass) {double :statement_klass, new: statement}
-  let(:statement) {double :statement, history: "Date | Credit | Debit | Balance\n"}
+  let(:statement) {double :statement}
 
   describe '#initializing' do
     it 'takes in the balance' do

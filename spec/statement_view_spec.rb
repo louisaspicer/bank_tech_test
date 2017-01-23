@@ -3,6 +3,7 @@ require './lib/statement_view.rb'
 describe Statement_View do
 
   subject(:statement_view) {described_class.new}
+  let(:statement) {double :statement, date: Date.today, credit: "", debit: 20, balance: 20}
 
   describe '#initializing' do
     it "can hold the statement history" do
@@ -11,9 +12,11 @@ describe Statement_View do
   end
 
   describe '#print_statement' do
-    it "prints the transaction history" do
-      statement = "Date        || Credit  || Debit   || Balance\n"
-      expect{statement_view.print_statement}.to output(statement).to_stdout
+    context "no history" do
+      it "prints the empty transaction history" do
+        statement = "Date        || Credit  || Debit   || Balance\n"
+        expect{statement_view.print_statement}.to output(statement).to_stdout
+      end
     end
   end
 
